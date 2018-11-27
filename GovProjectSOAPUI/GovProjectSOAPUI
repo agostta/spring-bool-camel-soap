@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gov="http://www.example.org/GovService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gov:GovRequest>
+         <in>2</in>
+      </gov:GovRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

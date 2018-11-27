@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="          
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd    
+    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd        
+    http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+    
+    <cxf:cxfEndpoint id="cxfEndpoint"
+		address="http://localhost:8088/mockGovServiceSOAP" wsdlURL="http://localhost:8088/mockGovServiceSOAP?wsdl"
+		serviceClass="org.example.govservice.GovServicePort"
+		xmlns:ws="http://www.example.org/GovService/"
+		loggingFeatureEnabled="true">
+
+		<cxf:properties>
+			<entry key="dataFormat" value="POJO" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+    
+ </beans>

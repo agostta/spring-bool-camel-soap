@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GovService"
+	targetNamespace="http://www.example.org/GovService/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://www.example.org/GovService/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://www.example.org/GovService/">
+			<xsd:element name="GovRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GovResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GovRequestMsg">
+		<wsdl:part name="parameters" element="tns:GovRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GovResponseMsg">
+		<wsdl:part name="parameters" element="tns:GovResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="GovServicePort">
+		<wsdl:operation name="getGovdetailsByname">
+			<wsdl:input message="tns:GovRequestMsg">
+			</wsdl:input>
+			<wsdl:output message="tns:GovResponseMsg">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GovServiceSOAP"
+		type="tns:GovServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getGovdetailsByname">
+			<soap:operation
+				soapAction="http://www.example.org/GovService/getGovdetailsByname" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="GovService">
+		<wsdl:port name="GovServiceSOAP"
+			binding="tns:GovServiceSOAP">
+			<soap:address
+				location="http://MacBook-Pro-de-Marcos.local:8088/mockGovServiceSOAP" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

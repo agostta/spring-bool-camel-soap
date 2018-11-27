@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="b3887b2d-71f1-4adb-a5db-bec560a0f459" activeEnvironment="Default" name="GovService" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="423849af-582d-48a0-a6d6-f7870963dd8d" wsaVersion="NONE" name="GovServiceSOAP" type="wsdl" bindingName="{http://www.example.org/GovService/}GovServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/Users/magostta/Desktop/GovService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/magostta/Desktop/GovService.wsdl"><con:part><con:url>file:/Users/magostta/Desktop/GovService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GovService" targetNamespace="http://www.example.org/GovService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/GovService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/GovService/">
+      <xsd:element name="GovRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GovResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GovRequestMsg">
+    <wsdl:part name="parameters" element="tns:GovRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GovResponseMsg">
+    <wsdl:part name="parameters" element="tns:GovResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GovServicePort">
+    <wsdl:operation name="getGovdetailsByname">
+      <wsdl:input message="tns:GovRequestMsg"></wsdl:input>
+      <wsdl:output message="tns:GovResponseMsg"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GovServiceSOAP" type="tns:GovServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getGovdetailsByname">
+      <soap:operation soapAction="http://www.example.org/GovService/getGovdetailsByname"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GovService">
+    <wsdl:port name="GovServiceSOAP" binding="tns:GovServiceSOAP">
+      <soap:address location="http://MacBook-Pro-de-Marcos.local:8088/mockGovServiceSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://MacBook-Pro-de-Marcos.local:8088/mockGovServiceSOAP</con:endpoint><con:endpoint>http://mbp-de-marcos.cpggpc.ca:8088/mockGovServiceSOAP</con:endpoint></con:endpoints><con:operation id="d2065759-9a0a-4d65-a4fa-8d7419c84b12" isOneWay="false" action="http://www.example.org/GovService/getGovdetailsByname" name="getGovdetailsByname" bindingOperationName="getGovdetailsByname" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2b5427ea-e542-48f2-ac1d-275a07d50759" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://MacBook-Pro-de-Marcos.local:8088/mockGovServiceSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gov="http://www.example.org/GovService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gov:GovRequest>
+         <in>2</in>
+      </gov:GovRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/GovService/getGovdetailsByname"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="ae184d45-fb9f-430a-a630-cc295853ef94" port="8088" path="/mockGovServiceSOAP" host="mbp-de-marcos.cpggpc.ca" name="GovServiceSOAP MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getGovdetailsByname" id="67038427-21d2-4a8b-a2a6-33c5ae665ead" interface="GovServiceSOAP" operation="getGovdetailsByname"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="86ecce5f-baea-4e77-bac9-ea9742a3ef82" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gov="http://www.example.org/GovService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gov:GovResponse>
+         <out>9</out>
+      </gov:GovResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/GovService/getGovdetailsByname"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
